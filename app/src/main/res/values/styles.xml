@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App theme -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- Text appearances -->
+    <style name="Text.Heading" parent="TextAppearance.AppCompat.Large">
+        <item name="android:textSize">@dimen/text_lg</item>
+        <item name="android:textColor">@color/textPrimary</item>
+    </style>
+    <style name="Text.Body" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textSize">@dimen/text_md</item>
+        <item name="android:textColor">@color/textSecondary</item>
+    </style>
+</resources>

@@ -1,0 +1,119 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_nav"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Title -->
+            <TextView
+                android:text="Skills Hub"
+                android:textSize="28sp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <!-- Search -->
+            <EditText
+                android:hint="Search"
+                android:padding="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/searchbg"
+                android:textColorHint="#BBBBBB"
+                android:textColor="@android:color/white"/>
+
+            <!-- Banner -->
+            <ImageView
+                android:src="@drawable/banner_placeholder"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:scaleType="centerCrop"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_banner"/>
+
+            <!-- Popular Skills -->
+            <TextView
+                android:text="Popular Skills"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_marginTop="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <!-- Repeat image + text layout -->
+                    <include layout="@layout/item_skill" />
+                    <!-- Add more items -->
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- Referral Section -->
+            <include layout="@layout/item_referral_card" />
+
+            <!-- Recently Viewed -->
+            <TextView
+                android:text="Recently Viewed"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_marginTop="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:paddingTop="8dp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <!-- Repeat card layout -->
+                    <include layout="@layout/item_recent_card" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- Journey Section -->
+            <TextView
+                android:text="Start your Journey"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_marginTop="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <include layout="@layout/item_journey_steps" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation -->
+    <include
+        android:id="@+id/bottom_nav"
+        layout="@layout/bottom_nav" />
+</RelativeLayout>
