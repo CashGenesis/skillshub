@@ -1,9 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.Skillshub" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+    <!-- Base application theme -->
+    <style name="Theme.YourAppName" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Apply global font -->
+        <item name="android:fontFamily">@font/myfont</item>
+        <!-- Optional: add for Material components -->
+        <item name="fontFamily">@font/myfont</item>
     </style>
 
+    <!-- Another style definition (separate, not nested) -->
     <style name="Theme.Skillshub" parent="Base.Theme.Skillshub" />
+
 </resources>

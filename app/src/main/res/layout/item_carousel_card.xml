@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="110dp"
+    android:layout_height="128dp"
+    android:layout_margin="8dp"
+    android:elevation="4dp">
+
+    <ImageView
+        android:id="@+id/carouselItemImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:background="@drawable/rounded_image1"
+        android:clipToOutline="true"
+        android:contentDescription="Skill Image" />
+
+    <TextView
+        android:id="@+id/carouselItemTitle"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_gravity="bottom"
+        android:background="#CC000000"
+        android:padding="6dp"
+        android:text="Skill Name"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:fontFamily="@font/myfont"
+        android:maxLines="1"
+        android:ellipsize="end" />
+</FrameLayout>

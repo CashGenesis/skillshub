@@ -1,119 +1,115 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black"
+    android:background="#141414"
     tools:context=".MainActivity">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_nav"
-        android:fillViewport="true">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:padding="16dp"
+        <!-- Title Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Skills hub"
+            android:textSize="24sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Search Bar -->
+        <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:textSize="18sp"
+            android:background="@drawable/searchbar_bg"
+            android:hint="Search"
+            android:padding="12dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#AAAAAA" />
 
-            <!-- Title -->
-            <TextView
-                android:text="Skills Hub"
-                android:textSize="28sp"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"
-                android:layout_marginBottom="16dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+        <!-- Hero Image Section -->
 
-            <!-- Search -->
-            <EditText
-                android:hint="Search"
-                android:padding="12dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/searchbg"
-                android:textColorHint="#BBBBBB"
-                android:textColor="@android:color/white"/>
+        <!-- Categories Title -->
 
-            <!-- Banner -->
-            <ImageView
-                android:src="@drawable/banner_placeholder"
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:scaleType="centerCrop"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/rounded_banner"/>
+        <ImageView
+            android:id="@+id/heroImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="Hero Image"
+            android:scaleType="fitCenter"
+            android:src="@drawable/herosection" />
 
-            <!-- Popular Skills -->
-            <TextView
-                android:text="Popular Skills"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"
-                android:layout_marginTop="24dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Popular Cources"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
 
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="8dp"
-                android:scrollbars="none">
+        <!-- Carousel Section with Increased Height -->
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <!-- Repeat image + text layout -->
-                    <include layout="@layout/item_skill" />
-                    <!-- Add more items -->
-                </LinearLayout>
-            </HorizontalScrollView>
+        <!-- More Content Section -->
 
-            <!-- Referral Section -->
-            <include layout="@layout/item_referral_card" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/carouselRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:overScrollMode="never"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:scrollbars="none"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_carousel_card" />
 
-            <!-- Recently Viewed -->
-            <TextView
-                android:text="Recently Viewed"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"
-                android:layout_marginTop="24dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/refer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="Hero Image"
+            android:scaleType="fitCenter"
+            android:src="@drawable/referandearn" />
 
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="none"
-                android:paddingTop="8dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recently Viewed"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"/>
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <!-- Repeat card layout -->
-                    <include layout="@layout/item_recent_card" />
-                </LinearLayout>
-            </HorizontalScrollView>
+        <!-- Placeholder for more content -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="#222222"
+            android:layout_marginBottom="16dp"/>
 
-            <!-- Journey Section -->
-            <TextView
-                android:text="Start your Journey"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"
-                android:layout_marginTop="24dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="More content below..."
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="16dp"/>
 
-            <include layout="@layout/item_journey_steps" />
 
-        </LinearLayout>
-    </ScrollView>
-
-    <!-- Bottom Navigation -->
-    <include
-        android:id="@+id/bottom_nav"
-        layout="@layout/bottom_nav" />
-</RelativeLayout>
+    </LinearLayout>
+</ScrollView>

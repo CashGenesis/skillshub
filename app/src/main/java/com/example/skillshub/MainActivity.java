@@ -1,24 +1,33 @@
 package com.example.skillshub;
-
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main); // Ensure this matches your XML layout file
 
-        // List of popular skills
-        String[] popularSkills = {"Video Editing", "Graphic Designing", "Web Development", "Logo Designing"};
+        // Setup RecyclerView
+        RecyclerView recyclerView = findViewById(R.id.carouselRecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
-        // Set up the ListView with the popular skills
-        ListView skillsListView = findViewById(R.id.popular_skills_list);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, popularSkills);
-        skillsListView.setAdapter(adapter);
+        // Create list of items
+        List<CarouselItem> list = new ArrayList<>();
+        list.add(new CarouselItem(R.drawable.appdev, "App Dev"));
+        list.add(new CarouselItem(R.drawable.webdev, "WebDev"));
+        list.add(new CarouselItem(R.drawable.graphdesign, "GraphDesign"));
+        list.add(new CarouselItem(R.drawable.videoedit, "Video-Edit"));
+        list.add(new CarouselItem(R.drawable.logodesign, "Logo Design"));
+
+        // Set Adapter
+        CarouselAdapter adapter = new CarouselAdapter(this, list);
+        recyclerView.setAdapter(adapter);
     }
 }
-
