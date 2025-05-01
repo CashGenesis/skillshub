@@ -11,4 +11,8 @@
     <dimen name="text_sm">14sp</dimen>
     <dimen name="text_md">16sp</dimen>
     <dimen name="text_lg">20sp</dimen>
+
+    <dimen name="viewpager_next_item_visible">16dp</dimen>
+    <dimen name="viewpager_current_item_horizontal_margin">32dp</dimen>
+
 </resources>

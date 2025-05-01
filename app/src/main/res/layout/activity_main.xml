@@ -34,10 +34,7 @@
             android:textColor="#FFFFFF"
             android:textColorHint="#AAAAAA" />
 
-        <!-- Hero Image Section -->
-
-        <!-- Categories Title -->
-
+        <!-- Hero Image -->
         <ImageView
             android:id="@+id/heroImage"
             android:layout_width="match_parent"
@@ -48,19 +45,17 @@
             android:scaleType="fitCenter"
             android:src="@drawable/herosection" />
 
+        <!-- Popular Courses -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Popular Cources"
+            android:text="Popular Courses"
             android:textSize="20sp"
             android:textColor="#FFFFFF"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"/>
 
-        <!-- Carousel Section with Increased Height -->
-
-        <!-- More Content Section -->
-
+        <!-- First Carousel -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/carouselRecyclerView"
             android:layout_width="match_parent"
@@ -77,16 +72,43 @@
             tools:itemCount="5"
             tools:listitem="@layout/item_carousel_card" />
 
+        <!-- Refer and Earn -->
         <ImageView
             android:id="@+id/refer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:adjustViewBounds="true"
-            android:contentDescription="Hero Image"
+            android:contentDescription="Refer and Earn Image"
             android:scaleType="fitCenter"
             android:src="@drawable/referandearn" />
 
+        <!-- New Carousel Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Featured Experts"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- New Carousel (Based on Profile Cards) -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/expertCarouselRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:overScrollMode="never"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:scrollbars="none"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="3"
+            tools:listitem="@layout/carousel_item" />
+
+        <!-- Recently Viewed -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -96,20 +118,20 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Placeholder for more content -->
+        <!-- Placeholder for More Content -->
         <View
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="#222222"
             android:layout_marginBottom="16dp"/>
 
+        <!-- Footer Text -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="More content below..."
             android:textColor="#FFFFFF"
             android:layout_marginTop="16dp"/>
-
 
     </LinearLayout>
 </ScrollView>
