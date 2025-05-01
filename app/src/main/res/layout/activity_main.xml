@@ -87,7 +87,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Featured Experts"
+            android:text="Previously Viewed"
             android:textSize="20sp"
             android:textColor="#FFFFFF"
             android:layout_marginTop="16dp"
@@ -108,22 +108,31 @@
             tools:itemCount="3"
             tools:listitem="@layout/carousel_item" />
 
-        <!-- Recently Viewed -->
+
+        <!-- Start your journey Title -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Recently Viewed"
+            android:text="Start your journey"
             android:textSize="20sp"
             android:textColor="#FFFFFF"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Placeholder for More Content -->
-        <View
+        <ImageView
+            android:id="@+id/startJourneyImage"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="#222222"
-            android:layout_marginBottom="16dp"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:contentDescription="Start your journey"
+            android:src="@drawable/startyourjourney" />
+
+
+
+
 
         <!-- Footer Text -->
         <TextView
