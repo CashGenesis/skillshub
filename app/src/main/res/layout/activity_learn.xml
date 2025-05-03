@@ -37,17 +37,18 @@
 
             <!-- Search Bar -->
             <EditText
+                android:id="@+id/search_bar_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:textSize="18sp"
-                android:background="#D9D9D9"
+                android:background="@drawable/searchbar_bg"
                 android:hint="Search"
                 android:padding="12dp"
-                android:textColor="#000000"
-                android:textColorHint="#333333" />
+                android:textColor="#FFFFFF"
+                android:textColorHint="#AAAAAA" />
 
-            <!-- Add your learn page content here -->
+            <!-- Section Title -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -56,8 +57,6 @@
                 android:textColor="#FFFFFF"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"/>
-
-            <!-- Skill Boxes -->
 
             <!-- Categories Section -->
             <LinearLayout

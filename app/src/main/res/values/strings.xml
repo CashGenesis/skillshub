@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Skillshub</string>
+    <string name="adobe_photoshop_masterclass">Adobe Photoshop Masterclass</string>
+    <string name="illustrator_course">Illustrator for Beginners to Advanced</string>
+    <string name="ui_ux_course">UI/UX Design Professional Course</string>
+    <string name="typography_course">Advanced Typography and Layout Design</string>
+
+    <string name="free_course_1">Free Design Basics Course</string>
+    <string name="free_course_2">Typography Essentials Free Course</string>
+
+    <string name="roadmap_step_1">Step 1: Learn Design Fundamentals</string>
+    <string name="roadmap_step_2">Step 2: Build Your First Portfolio</string>
 </resources>
