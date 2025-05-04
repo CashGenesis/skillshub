@@ -16,4 +16,8 @@
         <item name="android:textSize">@dimen/text_md</item>
         <item name="android:textColor">@color/textSecondary</item>
     </style>
+    <style name="CircleImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>
