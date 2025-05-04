@@ -1,10 +1,10 @@
 package com.example.skillshub;
-
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.VideoView;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +18,21 @@ public class LoginPage extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+
+        Button btnContinue = findViewById(R.id.btnContinue);
+        btnContinue.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginPage.this, MainActivity.class);
+            startActivity(intent);
+
+        });
+
+        Button btnSignUp = findViewById(R.id.btnSignUp);
+        btnSignUp.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginPage.this, SignUpPage.class);
+            startActivity(intent);
+
+        });
+
         VideoView videoView = findViewById(R.id.backgroundVideo);
 
         // Set video URI from raw folder

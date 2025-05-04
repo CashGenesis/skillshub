@@ -1,5 +1,5 @@
 package com.example.skillshub;
-import android.annotation.SuppressLint;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -8,13 +8,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class WorkJobAdapter extends RecyclerView.Adapter<WorkJobAdapter.JobViewHolder> {
-    private ArrayList<WorkActivity.WorkJobItem> jobList;
+
     private Context context;
+    private ArrayList<WorkActivity.WorkJobItem> jobList;
 
     public WorkJobAdapter(Context context, ArrayList<WorkActivity.WorkJobItem> jobList) {
         this.context = context;
@@ -29,35 +29,27 @@ public class WorkJobAdapter extends RecyclerView.Adapter<WorkJobAdapter.JobViewH
     }
 
     @Override
-    public void onBindViewHolder(@NonNull JobViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        WorkActivity.WorkJobItem currentJob = jobList.get(position);
+    public void onBindViewHolder(@NonNull JobViewHolder holder, int position) {
+        WorkActivity.WorkJobItem job = jobList.get(position);
 
-        holder.jobImage.setImageResource(currentJob.getImageResourceId());
-        holder.jobTitle.setText(currentJob.getTitle());
-        holder.jobDescription.setText(currentJob.getDescription());
-        holder.jobRating.setText(String.valueOf(currentJob.getRating()));
-        holder.jobTag1.setText(currentJob.getTag1());
-        holder.jobTag2.setText(currentJob.getTag2());
-        holder.jobPrice.setText("₹ " + currentJob.getPrice());
+        holder.title.setText(job.getTitle());
+        holder.description.setText(job.getDescription());
+        holder.rating.setText(String.valueOf(job.getRating()));
+        holder.tag1.setText(job.getTag1());
+        holder.tag2.setText(job.getTag2());
+        holder.price.setText("₹" + job.getPrice());
+        holder.image.setImageResource(job.getImageResourceId());
 
-        // Set click listener for the card
-        holder.jobCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, JobDetailActivity.class);
-
-                // Pass job details to the detail activity
-                intent.putExtra("JOB_TITLE", currentJob.getTitle());
-                intent.putExtra("JOB_DESCRIPTION", currentJob.getDescription());
-                intent.putExtra("JOB_RATING", currentJob.getRating());
-                intent.putExtra("JOB_TAG1", currentJob.getTag1());
-                intent.putExtra("JOB_TAG2", currentJob.getTag2());
-                intent.putExtra("JOB_PRICE", currentJob.getPrice());
-                intent.putExtra("JOB_IMAGE", currentJob.getImageResourceId());
-                intent.putExtra("JOB_POSITION", position);
-
-                context.startActivity(intent);
-            }
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, ProfileWorkActivityy.class);
+            intent.putExtra("title", job.getTitle());
+            intent.putExtra("description", job.getDescription());
+            intent.putExtra("rating", job.getRating());
+            intent.putExtra("tag1", job.getTag1());
+            intent.putExtra("tag2", job.getTag2());
+            intent.putExtra("price", job.getPrice());
+            intent.putExtra("imageResourceId", job.getImageResourceId());
+            context.startActivity(intent);
         });
     }
 
@@ -67,20 +59,18 @@ public class WorkJobAdapter extends RecyclerView.Adapter<WorkJobAdapter.JobViewH
     }
 
     public static class JobViewHolder extends RecyclerView.ViewHolder {
-        ImageView jobImage;
-        TextView jobTitle, jobDescription, jobRating, jobTag1, jobTag2, jobPrice;
-        CardView jobCard;
+        TextView title, description, rating, tag1, tag2, price;
+        ImageView image;
 
         public JobViewHolder(@NonNull View itemView) {
             super(itemView);
-            jobCard = itemView.findViewById(R.id.job_card);
-            jobImage = itemView.findViewById(R.id.job_image);
-            jobTitle = itemView.findViewById(R.id.job_title);
-            jobDescription = itemView.findViewById(R.id.job_description);
-            jobRating = itemView.findViewById(R.id.job_rating);
-            jobTag1 = itemView.findViewById(R.id.job_tag1);
-            jobTag2 = itemView.findViewById(R.id.job_tag2);
-            jobPrice = itemView.findViewById(R.id.job_price);
+            title = itemView.findViewById(R.id.job_title);
+            description = itemView.findViewById(R.id.job_description);
+            rating = itemView.findViewById(R.id.job_rating);
+            tag1 = itemView.findViewById(R.id.job_tag1);
+            tag2 = itemView.findViewById(R.id.job_tag2);
+            price = itemView.findViewById(R.id.job_price);
+            image = itemView.findViewById(R.id.job_image);
         }
     }
 }

@@ -15,7 +15,9 @@ public class ProfileWorkActivityy extends AppCompatActivity implements BottomNav
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_work_activityy);
-
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         // Setup BottomNavigationView
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);

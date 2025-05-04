@@ -63,7 +63,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Welcome Back"
+                        android:text="Join Skills Hub Today"
                         android:textColor="#000000"
                         android:textSize="24sp"
                         android:textStyle="bold" />
@@ -71,7 +71,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Sign in and continue your journey of learning and earning"
+                        android:text="Unlock new opportunities to learn,showcase,and earn with your skills"
                         android:textColor="#555555"
                         android:textSize="14sp"
                         android:layout_marginTop="4dp" />
@@ -92,8 +92,8 @@
                         android:id="@+id/editTextEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColorHint="#DDDDDD"
                         android:layout_marginTop="16dp"
+                        android:textColorHint="#DDDDDD"
                         android:background="@drawable/login_edittext_border"
                         android:hint="Email"
                         android:inputType="textEmailAddress"
@@ -103,10 +103,20 @@
                         android:id="@+id/editTextPassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColorHint="#DDDDDD"
                         android:layout_marginTop="16dp"
+                        android:textColorHint="#DDDDDD"
                         android:background="@drawable/login_edittext_border"
                         android:hint="Password"
+                        android:inputType="textPassword"
+                        android:padding="12dp" />
+                    <EditText
+                        android:id="@+id/editTextConfirm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:textColorHint="#DDDDDD"
+                        android:background="@drawable/login_edittext_border"
+                        android:hint="Confirm Password"
                         android:inputType="textPassword"
                         android:padding="12dp" />
 
@@ -120,28 +130,9 @@
                         android:textAllCaps="false"
                         android:textColor="#000000" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginBottom="16dp"
-                        android:text="or signup"
-                        android:textAlignment="center"
-                        android:textColor="#555555" />
 
-                    <!-- Social buttons -->
 
-                        <Button
-                            android:id="@+id/btnSignUp"
-                            android:layout_width="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.5"
-                            android:textAlignment="center"
-                            android:text="Sign-Up"
-                            android:background="#E3F273"
-                            android:textAllCaps="false"
-                             />
+
 
 
 
