@@ -45,16 +45,16 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         List<CardItem> expertList = new ArrayList<>();
         expertList.add(new CardItem("John Doe", "App Developer", "Experienced in building scalable Android applications.",
-                "₹1,200/hr", 4.8f, R.drawable.profileicon,
+                "₹1,200/hr", 4.8f, R.drawable.profilepic,
                 Arrays.asList("Java", "Kotlin", "Firebase")));
         expertList.add(new CardItem("Jane Smith", "UI/UX Designer", "Designs intuitive and visually appealing interfaces.",
-                "₹1,000/hr", 4.9f, R.drawable.profileicon,
+                "₹1,000/hr", 4.9f, R.drawable.profilepic,
                 Arrays.asList("Figma", "Adobe XD", "Sketch")));
         expertList.add(new CardItem("Mike Johnson", "Web Developer", "Full-stack developer specializing in MERN stack.",
-                "₹1,500/hr", 4.7f, R.drawable.profileicon,
+                "₹1,500/hr", 4.7f, R.drawable.profilepic,
                 Arrays.asList("React", "Node.js", "MongoDB")));
         expertList.add(new CardItem("Sarah Williams", "Graphic Designer", "Creates brand-focused digital graphics.",
-                "₹900/hr", 4.6f, R.drawable.profileicon,
+                "₹900/hr", 4.6f, R.drawable.profilepic,
                 Arrays.asList("Photoshop", "Illustrator", "Canva")));
 
         CardAdapter expertAdapter = new CardAdapter(this, expertList);
