@@ -3,6 +3,7 @@ package com.example.skillshub;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,6 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -71,10 +75,64 @@ public class ProfileActivity extends AppCompatActivity implements BottomNavigati
     }
 
     private void loadUserData() {
-        // TODO: Replace with actual data loading from SharedPreferences or backend
-        txtName.setText("abc name");
-        txtEmail.setText("Email - abc@gmail.com");
-        txtPhone.setText("Mob No. - 9999999999");
+        // Get the current user from Firebase Auth
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (currentUser != null) {
+            String userId = currentUser.getUid();
+
+            // Reference to Firestore
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+            // Get user document from Firestore
+            db.collection("users").document(userId)
+                    .get()
+                    .addOnSuccessListener(documentSnapshot -> {
+                        if (documentSnapshot.exists()) {
+                            // Get data from document
+                            String name = documentSnapshot.getString("name");
+                            String email = documentSnapshot.getString("email");
+                            String phone = documentSnapshot.getString("phone"); // This might be null if you don't store phone
+
+                            // Update UI
+                            txtName.setText(name);
+                            txtEmail.setText("Email - " + email);
+
+                            // Check if phone exists before setting it
+                            if (phone != null && !phone.isEmpty()) {
+                                txtPhone.setText("Mob No. - " + phone);
+                            } else {
+                                txtPhone.setText("Mob No. - Not provided");
+                            }
+
+                            // Show success message (optional)
+                            Toast.makeText(this, "Profile loaded successfully", Toast.LENGTH_SHORT).show();
+                        } else {
+                            // Document doesn't exist
+                            Toast.makeText(this, "User profile not found", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(e -> {
+                        // Handle any errors
+                        Log.e("Profile", "Error loading user data", e);
+                        Toast.makeText(this, "Failed to load profile: " + e.getMessage(),
+                                Toast.LENGTH_SHORT).show();
+
+                        // Set default values in case of error
+                        txtName.setText("Not available");
+                        txtEmail.setText("Email - Not available");
+                        txtPhone.setText("Mob No. - Not available");
+                    });
+        } else {
+            // No user is signed in
+            Toast.makeText(this, "No user signed in", Toast.LENGTH_SHORT).show();
+
+            // Redirect to login page
+            Intent intent = new Intent(this, LoginPage.class);
+            startActivity(intent);
+            finish();
+        }
+
 
         // Set the default selected role
         setRoleButtonState(btnFreelancer);
@@ -171,10 +229,10 @@ public class ProfileActivity extends AppCompatActivity implements BottomNavigati
         Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show();
 
         // TODO: Replace with your actual LoginActivity
-        // Intent intent = new Intent(this, LoginActivity.class);
-        // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        // startActivity(intent);
-        // finish();
+         Intent intent = new Intent(this, LoginPage.class);
+         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+         startActivity(intent);
+        finish();
     }
 
     @Override
