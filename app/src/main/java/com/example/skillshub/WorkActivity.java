@@ -2,6 +2,8 @@ package com.example.skillshub;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -17,6 +19,7 @@ public class WorkActivity extends AppCompatActivity implements BottomNavigationV
     private EditText searchBar;
     private RecyclerView jobRecyclerView;
     private ArrayList<WorkJobItem> jobList;
+    private ArrayList<WorkJobItem> filteredJobList;
     private WorkJobAdapter jobAdapter;
 
     @Override
@@ -38,15 +41,64 @@ public class WorkActivity extends AppCompatActivity implements BottomNavigationV
 
         // Initialize job list
         createJobList();
+        filteredJobList = new ArrayList<>(jobList); // Initialize with all items
 
         // Set up adapter
-        jobAdapter = new WorkJobAdapter(this, jobList);
+        jobAdapter = new WorkJobAdapter(this, filteredJobList);
         jobRecyclerView.setAdapter(jobAdapter);
+
+        // Set up search functionality
+        setupSearchBar();
 
         // Setup BottomNavigationView
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.nav_work); // Ensure work tab is selected
+    }
+
+    private void setupSearchBar() {
+        if (searchBar != null) {
+            searchBar.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    // Not needed
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    // Filter jobs when text changes
+                    filterJobs(s.toString());
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    // Not needed
+                }
+            });
+        }
+    }
+
+    private void filterJobs(String query) {
+        filteredJobList.clear();
+
+        if (query.isEmpty()) {
+            // If search is empty, show all jobs
+            filteredJobList.addAll(jobList);
+        } else {
+            // Filter based on job title, description, and tags
+            String lowerCaseQuery = query.toLowerCase();
+            for (WorkJobItem job : jobList) {
+                if (job.getTitle().toLowerCase().contains(lowerCaseQuery) ||
+                        job.getDescription().toLowerCase().contains(lowerCaseQuery) ||
+                        job.getTag1().toLowerCase().contains(lowerCaseQuery) ||
+                        job.getTag2().toLowerCase().contains(lowerCaseQuery)) {
+                    filteredJobList.add(job);
+                }
+            }
+        }
+
+        // Notify adapter of data change
+        jobAdapter.notifyDataSetChanged();
     }
 
     private void createJobList() {
@@ -118,6 +170,24 @@ public class WorkActivity extends AppCompatActivity implements BottomNavigationV
         }
 
         return false;
+    }
+
+    // Method to add a new job programmatically
+    public void addNewJob(String title, String description, float rating, String tag1, String tag2, int price, int imageResourceId) {
+        WorkJobItem newJob = new WorkJobItem(title, description, rating, tag1, tag2, price, imageResourceId);
+        jobList.add(newJob);
+
+        // Also add to filtered list if it matches current search criteria
+        String searchQuery = searchBar.getText().toString().toLowerCase();
+        if (searchQuery.isEmpty() ||
+                title.toLowerCase().contains(searchQuery) ||
+                description.toLowerCase().contains(searchQuery) ||
+                tag1.toLowerCase().contains(searchQuery) ||
+                tag2.toLowerCase().contains(searchQuery)) {
+            filteredJobList.add(newJob);
+        }
+
+        jobAdapter.notifyDataSetChanged();
     }
 
     // Inner class for job item model

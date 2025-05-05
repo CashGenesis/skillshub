@@ -3,15 +3,15 @@ package com.example.skillshub;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -23,18 +23,17 @@ public class LearnActivity extends AppCompatActivity {
 
     private LinearLayout skillBoxContainer;
     private List<SkillItem> skillItems;
+    private List<SkillItem> filteredSkillItems;
+    private EditText searchEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_learn);
 
-        // Disable search bar click
-        EditText searchEditText = findViewById(R.id.search_bar_id);
-        if (searchEditText != null) {
-            searchEditText.setFocusable(false);
-            searchEditText.setClickable(false);
-        }
+        // Setup search bar
+        searchEditText = findViewById(R.id.search_bar_id);
+        setupSearchBar();
 
         // Bottom Navigation setup
         setupBottomNavigation();
@@ -42,6 +41,55 @@ public class LearnActivity extends AppCompatActivity {
         // Skill box setup
         skillBoxContainer = findViewById(R.id.skillBoxContainer);
         initializeSkillData();
+        filteredSkillItems = new ArrayList<>(skillItems); // Initialize with all items
+        displaySkillBoxes();
+    }
+
+    private void setupSearchBar() {
+        if (searchEditText != null) {
+            // Make the search bar clickable and focusable
+            searchEditText.setFocusable(true);
+            searchEditText.setClickable(true);
+
+            // Add text change listener
+            searchEditText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    // Not needed
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    // Filter skills when text changes
+                    filterSkills(s.toString());
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    // Not needed
+                }
+            });
+        }
+    }
+
+    private void filterSkills(String query) {
+        filteredSkillItems.clear();
+
+        if (query.isEmpty()) {
+            // If search is empty, show all skills
+            filteredSkillItems.addAll(skillItems);
+        } else {
+            // Filter based on skill title and description
+            String lowerCaseQuery = query.toLowerCase();
+            for (SkillItem skill : skillItems) {
+                if (skill.getTitle().toLowerCase().contains(lowerCaseQuery) ||
+                        skill.getDescription().toLowerCase().contains(lowerCaseQuery)) {
+                    filteredSkillItems.add(skill);
+                }
+            }
+        }
+
+        // Display the filtered results
         displaySkillBoxes();
     }
 
@@ -154,8 +202,18 @@ public class LearnActivity extends AppCompatActivity {
     private void displaySkillBoxes() {
         skillBoxContainer.removeAllViews();
 
-        for (SkillItem skill : skillItems) {
-            addSkillBox(skill);
+        if (filteredSkillItems.isEmpty()) {
+            // Display a "No results found" message
+            TextView noResultsTextView = new TextView(this);
+            noResultsTextView.setText("No skills found matching your search");
+            noResultsTextView.setPadding(dpToPx(16), dpToPx(16), dpToPx(16), dpToPx(16));
+            noResultsTextView.setTextSize(16);
+            skillBoxContainer.addView(noResultsTextView);
+        } else {
+            // Display filtered skills
+            for (SkillItem skill : filteredSkillItems) {
+                addSkillBox(skill);
+            }
         }
     }
 
@@ -222,6 +280,7 @@ public class LearnActivity extends AppCompatActivity {
             newSkill.addAppIcon(iconId);
         }
         skillItems.add(newSkill);
+        filteredSkillItems.add(newSkill);
         addSkillBox(newSkill);
     }
 
