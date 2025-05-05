@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "498566978646",
+    "project_id": "skillshub-f5129",
+    "storage_bucket": "skillshub-f5129.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:498566978646:android:4317e8e8f7b62b53c92ff7",
+        "android_client_info": {
+          "package_name": "com.example.skillshub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmzRnfVEBzsgar11IHVJVdi834qVdFRaA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

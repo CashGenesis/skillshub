@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+      id("com.google.gms.google-services")
 }
 
 android {
@@ -37,6 +38,12 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.circleimageview) // ✅ Added CircleImageView
+    implementation(platform("com.google.firebase:firebase-bom:33.13.0"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-firestore")
+
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
