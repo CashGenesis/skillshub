@@ -30,21 +30,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Skills hub"
+                android:layout_marginTop="8dp"
                 android:textSize="24sp"
                 android:textColor="#FFFFFF"
                 android:layout_marginBottom="20dp"/>
 
-            <!-- Search Bar -->
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:textSize="18sp"
-                android:background="@drawable/searchbar_bg"
-                android:hint="Search"
-                android:padding="12dp"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#AAAAAA" />
+
 
             <!-- Hero Image -->
             <ImageView

@@ -1,6 +1,8 @@
 package com.example.skillshub;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -59,6 +61,27 @@ public class SignUpPage extends AppCompatActivity {
             // Validate inputs and register user
             registerUser();
         });
+
+        setupBackgroundVideo();
+    }
+
+    private void setupBackgroundVideo() {
+        VideoView videoView = findViewById(R.id.backgroundVideo);
+
+        // Set video URI from raw folder
+        Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.login_vid);
+        videoView.setVideoURI(videoUri);
+
+        // Configure video behavior
+        videoView.setOnPreparedListener(mp -> {
+            mp.setLooping(true); // Loop video
+            mp.setVolume(0f, 0f); // Mute video
+
+            // Stretch video to fit screen and crop if needed
+            mp.setVideoScalingMode(MediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING);
+        });
+
+        videoView.start();
     }
 
     private void registerUser() {
