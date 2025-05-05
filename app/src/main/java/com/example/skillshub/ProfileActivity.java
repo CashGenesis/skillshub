@@ -219,7 +219,10 @@ public class ProfileActivity extends AppCompatActivity implements BottomNavigati
     }
 
     private void logout() {
-        // Clear user session
+        // Sign out from Firebase Auth
+        FirebaseAuth.getInstance().signOut();
+
+        // Clear user session (SharedPreferences)
         SharedPreferences preferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.clear();
@@ -228,10 +231,9 @@ public class ProfileActivity extends AppCompatActivity implements BottomNavigati
         // Navigate to login screen
         Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show();
 
-        // TODO: Replace with your actual LoginActivity
-         Intent intent = new Intent(this, LoginPage.class);
-         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-         startActivity(intent);
+        Intent intent = new Intent(this, LoginPage.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
         finish();
     }
 
