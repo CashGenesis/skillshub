@@ -1,6 +1,7 @@
 package com.example.skillshub;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,8 +45,18 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
 
         // Set click listener for the item
         holder.frameLayout.setOnClickListener(v -> {
+            // Show a toast for feedback
             Toast.makeText(context, "Selected: " + item.getTitle(), Toast.LENGTH_SHORT).show();
-            // You can add navigation to another activity here
+
+            // Create an intent to navigate to the same activity
+            Intent intent = new Intent(context, CourseLearn.class);
+
+            // Pass any data if needed (e.g., title or image resource)
+            intent.putExtra("title", item.getTitle());
+            intent.putExtra("imageResource", item.getImageResource());
+
+            // Start the activity
+            context.startActivity(intent);
         });
     }
 

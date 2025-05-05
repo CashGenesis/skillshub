@@ -1,7 +1,7 @@
 package com.example.skillshub;
 
-
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +17,13 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
 
     private List<CardItem> cardItems;
     private Context context;
+
     // ✅ Updated constructor to accept Context
     public CardAdapter(Context context, List<CardItem> cardItems) {
         this.context = context;
         this.cardItems = cardItems;
     }
+
     @NonNull
     @Override
     public CardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -47,6 +49,15 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
             holder.tag2.setText(tags.get(1));
             holder.tag3.setText(tags.get(2));
         }
+
+        // Make the card clickable and navigate to ProfileWorkActivity
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, ProfileWorkActivityy.class);
+            intent.putExtra("title", item.getTitle());
+            intent.putExtra("description", item.getDescription());
+            // Add more extras if needed
+            context.startActivity(intent);
+        });
     }
 
     @Override
