@@ -52,17 +52,6 @@ public class WorkActivity extends AppCompatActivity implements BottomNavigationV
     private void createJobList() {
         jobList = new ArrayList<>();
 
-        // Add sample jobs
-        jobList.add(new WorkJobItem(
-                "Lorem Ipsum",
-                "Find freelance jobs and grow your career from college",
-                4.9f,
-                "Lorem",
-                "Lorem",
-                22000,
-                R.drawable.herosectioncourselearn
-        ));
-
         jobList.add(new WorkJobItem(
                 "UI/UX Designer",
                 "Create beautiful interfaces for mobile applications",
