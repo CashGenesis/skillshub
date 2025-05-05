@@ -3,6 +3,7 @@ package com.example.skillshub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,27 @@ public class ProfileWorkActivityy extends AppCompatActivity implements BottomNav
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+        TextView portfolioLink1 = findViewById(R.id.portfolio_link_1);
+        TextView portfolioLink2 = findViewById(R.id.portfolio_link_2);
+        TextView experienceLink1 = findViewById(R.id.experience_link_1);
+
+
+// Set click listeners
+        portfolioLink1.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://www.figma.com/file/abc123/finance-app-ui-redesign"));
+            startActivity(intent);
+        });
+
+        portfolioLink2.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://dribbble.com/shots/abc-portfolio-ui"));
+            startActivity(intent);
+        });
+
+        experienceLink1.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://pixelworks.design/certificates/uiux-2024-abc"));
+            startActivity(intent);
+        });
+
         // Setup BottomNavigationView
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);

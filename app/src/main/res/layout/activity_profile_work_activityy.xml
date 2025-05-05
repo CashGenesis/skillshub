@@ -53,7 +53,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ABC Name"
+                        android:text="Nikhil Kumar"
                         android:textColor="#FFFFFF"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -61,7 +61,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="abc@gmail.com"
+                        android:text="nikhil.kumar@gmail.com"
                         android:textColor="#CCCCCC"
                         android:textSize="14sp" />
 
@@ -104,7 +104,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="#1 Lorem Ipsum Dolor Sit Amet"
+                        android:text="#1 Finance App Redesign"
                         android:textStyle="bold"
                         android:textColor="#000000"
                         android:textSize="16sp" />
@@ -112,12 +112,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed id purus ac eros fermentum ultrices vel."
+                        android:text="Redesigned a mobile banking app interface for better usability and aesthetics. Created wireframes, prototypes, and a design system using Figma."
                         android:textColor="#444444"
                         android:textSize="14sp"
                         android:layout_marginTop="4dp" />
 
                     <TextView
+                        android:id="@+id/portfolio_link_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Link"
@@ -139,7 +140,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="#2 Lorem Ipsum Dolor Sit Amet"
+                        android:text="#2 Portfolio Website UI"
                         android:textStyle="bold"
                         android:textColor="#000000"
                         android:textSize="16sp" />
@@ -147,12 +148,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed id purus ac eros fermentum ultrices vel."
+                        android:text="Designed a sleek, responsive personal portfolio UI in Adobe XD and converted it into a web-ready layout in collaboration with a developer."
                         android:textColor="#444444"
                         android:textSize="14sp"
                         android:layout_marginTop="4dp" />
 
                     <TextView
+                        android:id="@+id/portfolio_link_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Link"
@@ -191,7 +193,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="#1 Lorem Ipsum Dolor Sit Amet"
+                        android:text="#1 UX Intern at PixelWorks Studio"
                         android:textStyle="bold"
                         android:textColor="#000000"
                         android:textSize="16sp" />
@@ -199,12 +201,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed id purus ac eros fermentum ultrices vel."
+                        android:text="Worked on user research, wireframing, and usability testing for a health and fitness app. Delivered a redesigned flow that improved retention."
                         android:textColor="#444444"
                         android:textSize="14sp"
                         android:layout_marginTop="4dp" />
 
                     <TextView
+                        android:id="@+id/experience_link_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Certificate Link"
