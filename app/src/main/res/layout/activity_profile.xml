@@ -172,7 +172,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="#1  Lorem Ipsum Dolor Sit Amet"
+                    android:text="#1 Finance App Redesign"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -180,7 +180,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Duis et diam vel nibh fringilla ultrices est."
+                    android:text="Redesigned a mobile banking app interface for better usability and aesthetics. Created wireframes, prototypes, and a design system using Figma."
                     android:textColor="#CCCCCC"
                     android:textSize="14sp"
                     android:layout_marginTop="4dp" />
@@ -216,7 +216,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="#1  Lorem Ipsum Dolor Sit Amet"
+                    android:text="1 UX Intern at PixelWorks Studio"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -224,7 +224,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Duis et diam vel nibh fringilla ultrices est."
+                    android:text="Worked on user research, wireframing, and usability testing for a health and fitness app. Delivered a redesigned flow that improved retention."
                     android:textColor="#CCCCCC"
                     android:textSize="14sp"
                     android:layout_marginTop="4dp" />
