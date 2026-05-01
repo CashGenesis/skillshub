@@ -3,6 +3,8 @@ package com.example.skillshub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -58,6 +60,18 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         CardAdapter expertAdapter = new CardAdapter(this, expertList);
         expertRecyclerView.setAdapter(expertAdapter);
+
+        // Setup Skill-Swap Card "Get Started" button
+        View skillSwapCard = findViewById(R.id.skill_swap_card);
+        Button btnGetStarted = skillSwapCard.findViewById(R.id.btn_get_started);
+        btnGetStarted.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navigate to MatchActivity
+                Intent intent = new Intent(MainActivity.this, MatchActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -74,8 +88,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             startActivity(new Intent(MainActivity.this, WorkActivity.class));
             overridePendingTransition(0, 0);
             return true;
-        } else if (itemId == R.id.nav_notifications) {
-            startActivity(new Intent(MainActivity.this, NotificationsActivity.class));
+        } else if (itemId == R.id.nav_match) {
+            startActivity(new Intent(MainActivity.this, MatchActivity.class));
             overridePendingTransition(0, 0);
             return true;
         } else if (itemId == R.id.nav_profile) {

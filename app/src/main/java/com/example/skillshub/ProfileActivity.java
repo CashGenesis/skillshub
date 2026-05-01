@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,8 +24,9 @@ public class ProfileActivity extends AppCompatActivity implements BottomNavigati
 
     private CircleImageView imgProfile;
     private TextView txtName, txtEmail, txtPhone;
+    private TextView txtExperienceLabel, txtExperience, txtPortfolioLabel, txtPortfolio;
+    private LinearLayout layoutExperience, layoutPortfolio;
     private Button btnEditProfile, btnShareProfile;
-    private Button btnFreelancer, btnRecruiter, btnLearner;
     private Button btnLogout;
     private BottomNavigationView bottomNavigationView;
 
@@ -54,6 +56,13 @@ public class ProfileActivity extends AppCompatActivity implements BottomNavigati
         bottomNavigationView.setSelectedItemId(R.id.nav_profile); // Ensure profile is selected
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Reload user data when returning from edit profile
+        loadUserData();
+    }
+
     private void initViews() {
         // Profile information
         imgProfile = findViewById(R.id.imgProfile);
@@ -61,14 +70,18 @@ public class ProfileActivity extends AppCompatActivity implements BottomNavigati
         txtEmail = findViewById(R.id.txtEmail);
         txtPhone = findViewById(R.id.txtPhone);
 
+        // Experience and Portfolio
+        txtExperienceLabel = findViewById(R.id.txtExperienceLabel);
+        txtExperience = findViewById(R.id.txtExperience);
+        layoutExperience = findViewById(R.id.layoutExperience);
+        
+        txtPortfolioLabel = findViewById(R.id.txtPortfolioLabel);
+        txtPortfolio = findViewById(R.id.txtPortfolio);
+        layoutPortfolio = findViewById(R.id.layoutPortfolio);
+
         // Profile action buttons
         btnEditProfile = findViewById(R.id.btnEditProfile);
         btnShareProfile = findViewById(R.id.btnShareProfile);
-
-        // Role selection buttons
-        btnFreelancer = findViewById(R.id.btnFreelancer);
-        btnRecruiter = findViewById(R.id.btnRecruiter);
-        btnLearner = findViewById(R.id.btnLearner);
 
         // Logout button
         btnLogout = findViewById(R.id.btnLogout);
@@ -92,7 +105,9 @@ public class ProfileActivity extends AppCompatActivity implements BottomNavigati
                             // Get data from document
                             String name = documentSnapshot.getString("name");
                             String email = documentSnapshot.getString("email");
-                            String phone = documentSnapshot.getString("phone"); // This might be null if you don't store phone
+                            String phone = documentSnapshot.getString("phone");
+                            String experience = documentSnapshot.getString("experience");
+                            String portfolio = documentSnapshot.getString("portfolio");
 
                             // Update UI
                             txtName.setText(name);
@@ -103,6 +118,26 @@ public class ProfileActivity extends AppCompatActivity implements BottomNavigati
                                 txtPhone.setText("Mob No. - " + phone);
                             } else {
                                 txtPhone.setText("Mob No. - Not provided");
+                            }
+
+                            // Display experience if available
+                            if (experience != null && !experience.isEmpty()) {
+                                txtExperience.setText(experience);
+                                txtExperienceLabel.setVisibility(android.view.View.VISIBLE);
+                                layoutExperience.setVisibility(android.view.View.VISIBLE);
+                            } else {
+                                txtExperienceLabel.setVisibility(android.view.View.GONE);
+                                layoutExperience.setVisibility(android.view.View.GONE);
+                            }
+
+                            // Display portfolio if available
+                            if (portfolio != null && !portfolio.isEmpty()) {
+                                txtPortfolio.setText(portfolio);
+                                txtPortfolioLabel.setVisibility(android.view.View.VISIBLE);
+                                layoutPortfolio.setVisibility(android.view.View.VISIBLE);
+                            } else {
+                                txtPortfolioLabel.setVisibility(android.view.View.GONE);
+                                layoutPortfolio.setVisibility(android.view.View.GONE);
                             }
 
                             // Show success message (optional)
@@ -132,16 +167,12 @@ public class ProfileActivity extends AppCompatActivity implements BottomNavigati
             startActivity(intent);
             finish();
         }
-
-
-        // Set the default selected role
-        setRoleButtonState(btnFreelancer);
     }
 
     private void setClickListeners() {
         btnEditProfile.setOnClickListener(v -> {
-            // TODO: Navigate to edit profile screen
-            Toast.makeText(this, "Edit Profile clicked", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(ProfileActivity.this, EditProfileActivity.class);
+            startActivity(intent);
         });
 
         btnShareProfile.setOnClickListener(v -> {
@@ -149,57 +180,9 @@ public class ProfileActivity extends AppCompatActivity implements BottomNavigati
             shareProfile();
         });
 
-        // Role selection buttons
-        btnFreelancer.setOnClickListener(v -> {
-            setRoleButtonState(btnFreelancer);
-        });
-
-        btnRecruiter.setOnClickListener(v -> {
-            setRoleButtonState(btnRecruiter);
-        });
-
-        btnLearner.setOnClickListener(v -> {
-            setRoleButtonState(btnLearner);
-        });
-
         btnLogout.setOnClickListener(v -> {
             logout();
         });
-    }
-
-    private void setRoleButtonState(Button selectedButton) {
-        // Reset all buttons to default state
-        btnFreelancer.setBackgroundResource(R.drawable.button_outline_bg);
-        btnFreelancer.setTextColor(getResources().getColor(R.color.white));
-
-        btnRecruiter.setBackgroundResource(R.drawable.button_outline_bg);
-        btnRecruiter.setTextColor(getResources().getColor(R.color.white));
-
-        btnLearner.setBackgroundResource(R.drawable.button_outline_bg);
-        btnLearner.setTextColor(getResources().getColor(R.color.white));
-
-        // Set selected button state
-        selectedButton.setBackgroundResource(R.drawable.button_yellow_bg);
-        selectedButton.setTextColor(getResources().getColor(R.color.black));
-
-        // Save selected role to preferences
-        String selectedRole = "";
-        if (selectedButton == btnFreelancer) {
-            selectedRole = "Freelancer";
-        } else if (selectedButton == btnRecruiter) {
-            selectedRole = "Recruiter";
-        } else if (selectedButton == btnLearner) {
-            selectedRole = "Learner";
-        }
-
-        saveSelectedRole(selectedRole);
-    }
-
-    private void saveSelectedRole(String role) {
-        SharedPreferences preferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("selectedRole", role);
-        editor.apply();
     }
 
     private void shareProfile() {
@@ -253,8 +236,8 @@ public class ProfileActivity extends AppCompatActivity implements BottomNavigati
             startActivity(new Intent(ProfileActivity.this, WorkActivity.class));
             overridePendingTransition(0, 0);
             return true;
-        } else if (itemId == R.id.nav_notifications) {
-            startActivity(new Intent(ProfileActivity.this, NotificationsActivity.class));
+        } else if (itemId == R.id.nav_match) {
+            startActivity(new Intent(ProfileActivity.this, MatchActivity.class));
             overridePendingTransition(0, 0);
             return true;
         } else if (itemId == R.id.nav_profile) {

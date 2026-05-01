@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "498566978646",
-    "project_id": "skillshub-f5129",
-    "storage_bucket": "skillshub-f5129.firebasestorage.app"
+    "project_number": "540195854776",
+    "project_id": "thriftsaas-ef957",
+    "storage_bucket": "thriftsaas-ef957.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:498566978646:android:4317e8e8f7b62b53c92ff7",
+        "mobilesdk_app_id": "1:540195854776:android:d5378f73a55ac4a9f4974d",
         "android_client_info": {
           "package_name": "com.example.skillshub"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCmzRnfVEBzsgar11IHVJVdi834qVdFRaA"
+          "current_key": "AIzaSyDfO7W6molWc3oSKKyd_blwQjKecErlktU"
         }
       ],
       "services": {

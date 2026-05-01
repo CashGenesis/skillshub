@@ -62,8 +62,8 @@ public class ProfileWorkActivityy extends AppCompatActivity implements BottomNav
             startActivity(new Intent(ProfileWorkActivityy.this, WorkActivity.class));
             overridePendingTransition(0, 0);
             return true;
-        } else if (itemId == R.id.nav_notifications) {
-            startActivity(new Intent(ProfileWorkActivityy.this, NotificationsActivity.class));
+        } else if (itemId == R.id.nav_match) {
+            startActivity(new Intent(ProfileWorkActivityy.this, MatchActivity.class));
             overridePendingTransition(0, 0);
             return true;
         } else if (itemId == R.id.nav_profile) {

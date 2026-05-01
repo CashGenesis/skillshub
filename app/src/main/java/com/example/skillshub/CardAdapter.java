@@ -18,7 +18,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
     private List<CardItem> cardItems;
     private Context context;
 
-    // ✅ Updated constructor to accept Context
     public CardAdapter(Context context, List<CardItem> cardItems) {
         this.context = context;
         this.cardItems = cardItems;
@@ -42,7 +41,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         holder.descriptionText.setText(item.getDescription());
         holder.ratingText.setText(String.valueOf(item.getRating()));
 
-        // Handle tags - assuming we have exactly 3 tags for simplicity
         List<String> tags = item.getTags();
         if (tags != null && tags.size() >= 3) {
             holder.tag1.setText(tags.get(0));

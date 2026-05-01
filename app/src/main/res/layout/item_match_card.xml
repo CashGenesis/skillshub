@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardBackgroundColor="#1A1A1A"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="24dp">
+
+        <!-- Skill Category Title -->
+        <TextView
+            android:id="@+id/txt_skill_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Video Editing"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Description -->
+        <TextView
+            android:id="@+id/txt_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Mastering cinematic storytelling through advanced editing techniques and visual rhythm"
+            android:textColor="#AAAAAA"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:layout_marginTop="6dp"
+            app:layout_constraintTop_toBottomOf="@id/txt_skill_category"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Preview Image -->
+        <ImageView
+            android:id="@+id/img_preview"
+            android:layout_width="0dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="12dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/herosectioncourselearn"
+            app:layout_constraintTop_toBottomOf="@id/txt_description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Profile Section -->
+        <LinearLayout
+            android:id="@+id/profile_section"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/img_preview"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_profile"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/profilepic" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="10dp">
+
+                <TextView
+                    android:id="@+id/txt_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alex Rivera"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txt_studio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LUMINA STUDIO ORG"
+                    android:textColor="#888888"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txt_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="★ 4.9"
+                android:textColor="#C8FF00"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- Progress Bar -->
+        <View
+            android:id="@+id/progress_bar"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:background="#C8FF00"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/profile_section"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Skills Tags -->
+        <LinearLayout
+            android:id="@+id/skills_tags"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/progress_bar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Teaches Tag -->
+            <TextView
+                android:id="@+id/txt_teaches"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TEACHES: After Effects"
+                android:textColor="#C8FF00"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:background="@drawable/tag_background"
+                android:layout_marginBottom="6dp" />
+
+            <!-- Wants to Learn Tag -->
+            <TextView
+                android:id="@+id/txt_wants_learn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WANTS TO LEARN: Blender 3D"
+                android:textColor="#C8FF00"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:background="@drawable/tag_background" />
+
+        </LinearLayout>
+
+        <!-- Software Icons -->
+        <LinearLayout
+            android:id="@+id/software_icons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/skills_tags"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/photoshop_icon"
+                android:layout_marginEnd="6dp" />
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/illustrator_icon"
+                android:layout_marginEnd="6dp" />
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/figma_logo"
+                android:layout_marginEnd="6dp" />
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/canva_logo" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
