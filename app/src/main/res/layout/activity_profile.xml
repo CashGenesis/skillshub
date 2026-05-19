@@ -90,7 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:layout_marginBottom="8dp">
+                android:layout_marginBottom="16dp">
 
                 <Button
                     android:id="@+id/btnEditProfile"
@@ -112,130 +112,67 @@
                     android:textColor="@color/white" />
             </LinearLayout>
 
-            <!-- Role Buttons -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginBottom="16dp">
-
-                <Button
-                    android:id="@+id/btnFreelancer"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Freelancer"
-                    android:background="@drawable/button_yellow_bg"
-                    android:textColor="@color/black"
-                    android:layout_marginEnd="8dp" />
-
-                <Button
-                    android:id="@+id/btnRecruiter"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Recruiter"
-                    android:background="@drawable/button_outline_bg"
-                    android:textColor="@color/white"
-                    android:layout_marginEnd="8dp" />
-
-                <Button
-                    android:id="@+id/btnLearner"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Learner"
-                    android:background="@drawable/button_outline_bg"
-                    android:textColor="@color/white" />
-            </LinearLayout>
-
-            <!-- Portfolio Section -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Portfolio"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp" />
-
-            <!-- Portfolio Items -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/card_background"
-                android:padding="12dp"
-                android:layout_marginBottom="8dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="#1 Finance App Redesign"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Redesigned a mobile banking app interface for better usability and aesthetics. Created wireframes, prototypes, and a design system using Figma."
-                    android:textColor="#CCCCCC"
-                    android:textSize="14sp"
-                    android:layout_marginTop="4dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Link..."
-                    android:textColor="#9C27B0"
-                    android:textSize="14sp"
-                    android:layout_marginTop="8dp" />
-            </LinearLayout>
-
             <!-- Experience Section -->
             <TextView
+                android:id="@+id/txtExperienceLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Experience"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="8dp" />
+                android:layout_marginBottom="8dp"
+                android:visibility="gone" />
 
-            <!-- Experience Items -->
             <LinearLayout
+                android:id="@+id/layoutExperience"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@drawable/card_background"
                 android:padding="12dp"
-                android:layout_marginBottom="8dp">
+                android:layout_marginBottom="16dp"
+                android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/txtExperience"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="1 UX Intern at PixelWorks Studio"
+                    android:text=""
                     android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Portfolio Section -->
+            <TextView
+                android:id="@+id/txtPortfolioLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Portfolio"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/layoutPortfolio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/card_background"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/txtPortfolio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Worked on user research, wireframing, and usability testing for a health and fitness app. Delivered a redesigned flow that improved retention."
-                    android:textColor="#CCCCCC"
+                    android:text=""
+                    android:textColor="@color/white"
                     android:textSize="14sp"
-                    android:layout_marginTop="4dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Certificate link..."
-                    android:textColor="#9C27B0"
-                    android:textSize="14sp"
-                    android:layout_marginTop="8dp" />
+                    android:autoLink="web" />
             </LinearLayout>
 
             <!-- Logout Button -->

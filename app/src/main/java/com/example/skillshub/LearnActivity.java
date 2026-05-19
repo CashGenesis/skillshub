@@ -110,8 +110,8 @@ public class LearnActivity extends AppCompatActivity {
                 startActivity(new Intent(LearnActivity.this, WorkActivity.class));
                 overridePendingTransition(0, 0);
                 return true;
-            } else if (itemId == R.id.nav_notifications) {
-                startActivity(new Intent(LearnActivity.this, NotificationsActivity.class));
+            } else if (itemId == R.id.nav_match) {
+                startActivity(new Intent(LearnActivity.this, MatchActivity.class));
                 overridePendingTransition(0, 0);
                 return true;
             } else if (itemId == R.id.nav_profile) {

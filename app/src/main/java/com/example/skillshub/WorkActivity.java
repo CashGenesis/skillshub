@@ -159,8 +159,8 @@ public class WorkActivity extends AppCompatActivity implements BottomNavigationV
             return true;
         } else if (itemId == R.id.nav_work) {
             return true; // We're already on the work page
-        } else if (itemId == R.id.nav_notifications) {
-            startActivity(new Intent(WorkActivity.this, NotificationsActivity.class));
+        } else if (itemId == R.id.nav_match) {
+            startActivity(new Intent(WorkActivity.this, MatchActivity.class));
             overridePendingTransition(0, 0);
             return true;
         } else if (itemId == R.id.nav_profile) {

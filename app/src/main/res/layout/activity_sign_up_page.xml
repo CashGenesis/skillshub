@@ -3,18 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <!-- Background Video -->
-    <VideoView
-        android:id="@+id/backgroundVideo"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <!-- Foreground Content -->
     <ScrollView
@@ -28,7 +18,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
             android:padding="32dp">
@@ -82,7 +72,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:textColorHint="#DDDDDD"
+                        android:textColor="#000000"
+                        android:textColorHint="#AAAAAA"
                         android:background="@drawable/login_edittext_border"
                         android:hint="Name"
                         android:inputType="textPersonName"
@@ -93,7 +84,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:textColorHint="#DDDDDD"
+                        android:textColor="#000000"
+                        android:textColorHint="#AAAAAA"
                         android:background="@drawable/login_edittext_border"
                         android:hint="Email"
                         android:inputType="textEmailAddress"
@@ -104,17 +96,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:textColorHint="#DDDDDD"
+                        android:textColor="#000000"
+                        android:textColorHint="#AAAAAA"
                         android:background="@drawable/login_edittext_border"
                         android:hint="Password"
                         android:inputType="textPassword"
                         android:padding="12dp" />
+                    
                     <EditText
                         android:id="@+id/editTextConfirm"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:textColorHint="#DDDDDD"
+                        android:textColor="#000000"
+                        android:textColorHint="#AAAAAA"
                         android:background="@drawable/login_edittext_border"
                         android:hint="Confirm Password"
                         android:inputType="textPassword"
@@ -129,12 +124,6 @@
                         android:text="Continue"
                         android:textAllCaps="false"
                         android:textColor="#000000" />
-
-
-
-
-
-
 
                 </LinearLayout>
             </LinearLayout>

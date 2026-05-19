@@ -20,9 +20,9 @@
         android:enabled="true" />
 
     <item
-        android:id="@+id/nav_notifications"
-        android:icon="@drawable/ic_notifications"
-        android:title="Notifications"
+        android:id="@+id/nav_match"
+        android:icon="@drawable/ic_match"
+        android:title="Match"
         android:enabled="true" />
 
     <item

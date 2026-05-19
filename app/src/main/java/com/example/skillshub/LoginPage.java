@@ -1,8 +1,6 @@
 package com.example.skillshub;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -10,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -71,28 +68,6 @@ public class LoginPage extends AppCompatActivity {
             Intent intent = new Intent(LoginPage.this, SignUpPage.class);
             startActivity(intent);
         });
-
-        // Setup background video
-        setupBackgroundVideo();
-    }
-
-    private void setupBackgroundVideo() {
-        VideoView videoView = findViewById(R.id.backgroundVideo);
-
-        // Set video URI from raw folder
-        Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.login_vid);
-        videoView.setVideoURI(videoUri);
-
-        // Configure video behavior
-        videoView.setOnPreparedListener(mp -> {
-            mp.setLooping(true); // Loop video
-            mp.setVolume(0f, 0f); // Mute video
-
-            // Stretch video to fit screen and crop if needed
-            mp.setVideoScalingMode(MediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING);
-        });
-
-        videoView.start();
     }
 
     private void loginUser() {
@@ -112,8 +87,7 @@ public class LoginPage extends AppCompatActivity {
             return;
         }
 
-        // Show some loading indicator if needed
-        // For example, disable the button and show progress
+        // Disable the button
         btnContinue.setEnabled(false);
 
         // Authenticate with Firebase
@@ -163,22 +137,31 @@ public class LoginPage extends AppCompatActivity {
                     if (documentSnapshot.exists()) {
                         // Document exists, retrieve user data
                         String name = documentSnapshot.getString("name");
-                        // You can retrieve other user data as needed
+                        Boolean onboardingCompleted = documentSnapshot.getBoolean("onboardingCompleted");
 
                         Toast.makeText(LoginPage.this, "Welcome back, " + name, Toast.LENGTH_SHORT).show();
 
-                        // Navigate to main activity
-                        Intent intent = new Intent(LoginPage.this, MainActivity.class);
-                        // You can pass user data to MainActivity if needed
-                        intent.putExtra("USER_ID", userId);
-                        intent.putExtra("USER_NAME", name);
-                        startActivity(intent);
+                        // Check if onboarding is completed
+                        if (onboardingCompleted != null && onboardingCompleted) {
+                            // Onboarding completed, go to MainActivity
+                            Intent intent = new Intent(LoginPage.this, MainActivity.class);
+                            intent.putExtra("USER_ID", userId);
+                            intent.putExtra("USER_NAME", name);
+                            startActivity(intent);
+                        } else {
+                            // Onboarding not completed, go to SkillYouKnowActivity
+                            Intent intent = new Intent(LoginPage.this, SkillYouKnowActivity.class);
+                            intent.putExtra("USER_ID", userId);
+                            startActivity(intent);
+                        }
                         finish(); // Close the login activity
                     } else {
-                        // This should rarely happen - user exists in Auth but not in Firestore
-                        Log.d(TAG, "User document does not exist in Firestore");
-                        Toast.makeText(LoginPage.this, "User profile not found. Please contact support.",
-                                Toast.LENGTH_SHORT).show();
+                        // User exists in Auth but not in Firestore, start onboarding
+                        Log.d(TAG, "User document does not exist in Firestore, starting onboarding");
+                        Intent intent = new Intent(LoginPage.this, SkillYouKnowActivity.class);
+                        intent.putExtra("USER_ID", userId);
+                        startActivity(intent);
+                        finish();
                     }
                 }
             }).addOnFailureListener(new OnFailureListener() {

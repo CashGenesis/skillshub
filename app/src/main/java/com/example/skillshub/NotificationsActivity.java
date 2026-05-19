@@ -46,7 +46,8 @@ public class NotificationsActivity extends AppCompatActivity {
 
     private void setupBottomNavigation() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.nav_notifications);
+        // Don't select any item by default since this activity is not in bottom nav anymore
+        // bottomNavigationView.setSelectedItemId(R.id.nav_match);
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
@@ -62,7 +63,9 @@ public class NotificationsActivity extends AppCompatActivity {
                 startActivity(new Intent(this, WorkActivity.class));
                 overridePendingTransition(0, 0);
                 return true;
-            } else if (itemId == R.id.nav_notifications) {
+            } else if (itemId == R.id.nav_match) {
+                startActivity(new Intent(this, MatchActivity.class));
+                overridePendingTransition(0, 0);
                 return true;
             } else if (itemId == R.id.nav_profile) {
                 startActivity(new Intent(this, ProfileActivity.class));

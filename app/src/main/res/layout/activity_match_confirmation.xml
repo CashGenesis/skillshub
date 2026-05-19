@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A0A0A">
+
+    <!-- Close Button -->
+    <ImageView
+        android:id="@+id/btn_close"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_margin="24dp"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        app:tint="#FFFFFF"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- It's a Match Title -->
+    <TextView
+        android:id="@+id/txt_match_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="It's a Match!"
+        android:textColor="#C8FF00"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        android:layout_marginTop="80dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Subtitle -->
+    <TextView
+        android:id="@+id/txt_subtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="You and Alex Rivera have matched!\nStart exchanging skills now."
+        android:textColor="#AAAAAA"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintTop_toBottomOf="@id/txt_match_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Profile Images Container -->
+    <FrameLayout
+        android:id="@+id/profiles_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/txt_subtitle"
+        app:layout_constraintBottom_toTopOf="@id/buttons_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Left Profile (User) -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_user_profile"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginEnd="80dp"
+            android:layout_gravity="center_vertical"
+            app:cardCornerRadius="70dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="#C8FF00">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_user_profile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/profilepic"
+                android:padding="4dp" />
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Right Profile (Match) -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_match_profile"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginStart="80dp"
+            android:layout_gravity="center_vertical"
+            app:cardCornerRadius="70dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="#C8FF00">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_match_profile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/profilepic"
+                android:padding="4dp" />
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Heart Icon in Center -->
+        <ImageView
+            android:id="@+id/img_heart"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:src="@android:drawable/btn_star_big_on"
+            app:tint="#C8FF00" />
+
+    </FrameLayout>
+
+    <!-- Match Details Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/match_details_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        app:cardBackgroundColor="#1A1A1A"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toTopOf="@id/buttons_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Match Percentage -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Match Score: "
+                    android:textColor="#AAAAAA"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txt_match_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="94%"
+                    android:textColor="#C8FF00"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- Skills Exchange Info -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="You Teach"
+                        android:textColor="#888888"
+                        android:textSize="12sp"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:id="@+id/txt_you_teach"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="UI Design"
+                        android:textColor="#C8FF00"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/tag_background"
+                        android:padding="8dp" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@android:drawable/ic_menu_sort_by_size"
+                    app:tint="#C8FF00"
+                    android:rotation="90" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="They Teach"
+                        android:textColor="#888888"
+                        android:textSize="12sp"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:id="@+id/txt_they_teach"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Video Editing"
+                        android:textColor="#C8FF00"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/tag_background"
+                        android:padding="8dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Action Buttons -->
+    <LinearLayout
+        android:id="@+id/buttons_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Send Message Button -->
+        <Button
+            android:id="@+id/btn_send_message"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Send Message"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:backgroundTint="#C8FF00"
+            app:cornerRadius="28dp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Keep Swiping Button -->
+        <Button
+            android:id="@+id/btn_keep_swiping"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Keep Swiping"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:backgroundTint="#2A2A2A"
+            app:cornerRadius="28dp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,8 +1,6 @@
 package com.example.skillshub;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -10,7 +8,6 @@ import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -61,27 +58,6 @@ public class SignUpPage extends AppCompatActivity {
             // Validate inputs and register user
             registerUser();
         });
-
-        setupBackgroundVideo();
-    }
-
-    private void setupBackgroundVideo() {
-        VideoView videoView = findViewById(R.id.backgroundVideo);
-
-        // Set video URI from raw folder
-        Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.login_vid);
-        videoView.setVideoURI(videoUri);
-
-        // Configure video behavior
-        videoView.setOnPreparedListener(mp -> {
-            mp.setLooping(true); // Loop video
-            mp.setVolume(0f, 0f); // Mute video
-
-            // Stretch video to fit screen and crop if needed
-            mp.setVideoScalingMode(MediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING);
-        });
-
-        videoView.start();
     }
 
     private void registerUser() {
@@ -159,7 +135,8 @@ public class SignUpPage extends AppCompatActivity {
         Map<String, Object> userData = new HashMap<>();
         userData.put("name", name);
         userData.put("email", email);
-        userData.put("userId", userId);
+        userData.put("uid", userId);
+        userData.put("onboardingCompleted", false);
         userData.put("createdAt", System.currentTimeMillis());
 
         // Add user to Firestore
@@ -169,8 +146,8 @@ public class SignUpPage extends AppCompatActivity {
                     Log.d(TAG, "User data saved to Firestore");
                     Toast.makeText(SignUpPage.this, "Registration successful!", Toast.LENGTH_SHORT).show();
 
-                    // Navigate to main activity
-                    Intent intent = new Intent(SignUpPage.this, MainActivity.class);
+                    // Navigate to onboarding (SkillYouKnowActivity)
+                    Intent intent = new Intent(SignUpPage.this, SkillYouKnowActivity.class);
                     intent.putExtra("USER_ID", userId);
                     startActivity(intent);
                     finish(); // Close signup activity
@@ -186,6 +163,9 @@ public class SignUpPage extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
+        // STATIC MODE: Auto-login disabled
+        
+        /* FIREBASE AUTO-LOGIN LOGIC (COMMENTED OUT FOR STATIC MODE)
         // Check if user is already signed in
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
@@ -194,5 +174,6 @@ public class SignUpPage extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+        */
     }
 }
